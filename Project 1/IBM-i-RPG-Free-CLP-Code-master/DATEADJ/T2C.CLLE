@@ -1,0 +1,42 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class DateManipulation {
+
+    public static void main(String[] args) {
+        
+        // Get tomorrow's date
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        System.out.println("Tomorrow's date: " + tomorrow);
+        
+        // Get yesterday's date based on job date
+        LocalDate yesterday = LocalDate.now().minusDays(1);
+        System.out.println("Yesterday's date: " + yesterday);
+        
+        // Get date one day before specified date
+        LocalDate specifiedDate = LocalDate.of(2023, 5, 15);
+        LocalDate oneDayBefore = specifiedDate.minusDays(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String formattedDate = oneDayBefore.format(formatter);
+        System.out.println("One day before " + specifiedDate + ": " + formattedDate);
+        
+        // Convert date to Julian format
+        String julianDate = specifiedDate.format(DateTimeFormatter.ofPattern("yyDDD"));
+        System.out.println("Julian format of " + specifiedDate + ": " + julianDate);
+        
+        // Add one month keeping format
+        LocalDate oneMonthLater = specifiedDate.plusMonths(1);
+        System.out.println("One month after " + specifiedDate + ": " + oneMonthLater);
+        
+        // Add two years keeping format 
+        LocalDate twoYearsLater = specifiedDate.plusYears(2);
+        System.out.println("Two years after " + specifiedDate + ": " + twoYearsLater);
+        
+        // Add two years and convert format
+        LocalDate twoYearsLaterSystem = specifiedDate.plusYears(2);
+        String twoYearsLaterFormatted = twoYearsLaterSystem.format(formatter);
+        System.out.println("Two years after " + specifiedDate + " in MM/dd/yyyy format: " + twoYearsLaterFormatted);
+        
+    }
+
+}
